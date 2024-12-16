@@ -84,46 +84,58 @@ class GraphActivity : AppCompatActivity() {
     private fun setPieChartData(entries: List<PieEntry>, totalAmount: Double) {
         val dataSet = PieDataSet(entries, if (showPercentages) "Покупки (%)" else "Покупки ($totalAmount)")
 
-        // Настроим цвета
-        dataSet.setColors(*ColorTemplate.MATERIAL_COLORS)
+        // Настройка цветов
+        dataSet.setColors(ColorTemplate.JOYFUL_COLORS.toMutableList())
 
-        // Настроим размер текста для подписей внутри графика
-        dataSet.valueTextSize = 12f // Уменьшаем размер текста для подписей
+        // Настройка текста
+        dataSet.valueTextSize = 12f
         dataSet.valueTextColor = Color.BLACK
+
+        // Установка расстояния между секторами
+        dataSet.sliceSpace = 3f // Пробел между секторами
+
+        // Расположение подписей за пределами диаграммы
+        dataSet.yValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
+        dataSet.xValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
+
+        // Установка линий связи для подписей
+        dataSet.valueLinePart1Length = 0.5f // Длина первой части линии
+        dataSet.valueLinePart2Length = 0.3f // Длина второй части линии
+        dataSet.valueLineWidth = 1f // Толщина линий
+        dataSet.valueLineColor = Color.BLACK // Цвет линий
 
         val pieData = PieData(dataSet)
 
-        // Устанавливаем правильный valueFormatter для процентов или валюты
+        // Установка форматтера
         pieData.setValueFormatter(
             if (showPercentages) {
-                PercentFormatter(pieChart) // Форматируем как %
+                PercentFormatter(pieChart)
             } else {
-                DefaultValueFormatter(0) // Форматируем как целое число
+                DefaultValueFormatter(0)
             }
         )
 
         pieChart.data = pieData
 
-        // Дополнительные настройки диаграммы
-        pieChart.description.isEnabled = false // Отключаем описание
-        pieChart.legend.isEnabled = true // Включаем легенду
+        // Отключение описания
+        pieChart.description.isEnabled = false
 
-        // Размещение легенды по бокам
-        pieChart.legend.orientation = com.github.mikephil.charting.components.Legend.LegendOrientation.VERTICAL
-        pieChart.legend.verticalAlignment = com.github.mikephil.charting.components.Legend.LegendVerticalAlignment.TOP
-        pieChart.legend.horizontalAlignment = com.github.mikephil.charting.components.Legend.LegendHorizontalAlignment.LEFT
+        // Настройка легенды
+        pieChart.legend.isEnabled = false
 
-        // Настроим легенду
-        pieChart.legend.textSize = 12f // Уменьшаем размер текста в легенде
-        pieChart.legend.formSize = 12f // Уменьшаем размер символов в легенде
+        pieChart.legend.textSize = 12f
+        pieChart.legend.formSize = 12f
+        pieChart.legend.isWordWrapEnabled = true
 
-        // Настроим текст в центре графика
+        // Настройка текста в центре
         pieChart.centerText = "Сумма: $totalAmount"
-        pieChart.setCenterTextSize(14f) // Уменьшаем размер текста в центре
+        pieChart.setCenterTextSize(14f)
 
+        // Анимация
         pieChart.animateY(1400, Easing.EaseInOutQuad)
-        pieChart.invalidate() // Обновляем диаграмму
+        pieChart.invalidate()
     }
+
 
 
 
