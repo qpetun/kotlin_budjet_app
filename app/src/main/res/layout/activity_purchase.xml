@@ -3,40 +3,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/background_color">
 
+    <!-- EditText для ввода имени с темным текстом и более темным фоном для подсказки -->
     <EditText
         android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name" />
+        android:hint="Название"
+        />
 
+    <!-- EditText для ввода цены с темным текстом и более темным фоном для подсказки -->
     <EditText
         android:id="@+id/et_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Price"
-        android:inputType="numberDecimal" />
+        android:hint="Цена"
+        android:inputType="numberDecimal"
+        android:backgroundTint="@color/light_background" />
 
+    <!-- Spinner -->
     <Spinner
         android:id="@+id/sp_category"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="36dp"
+
+        android:backgroundTint="@color/background_color"
+        android:outlineAmbientShadowColor="#181717"
+        android:outlineSpotShadowColor="#514154"
+        android:popupBackground="@drawable/spinner_dropdown_background" />
+
+
 
     <Button
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Purchase" />
+        android:text="Добавить покупку"
+        android:backgroundTint="@color/button_color"
+        android:textColor="@android:color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+
     <Button
         android:id="@+id/btn_view_graph"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Graph" />
+        android:text="График"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/button_color"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Профиль"
+        android:backgroundTint="@color/button_color_pastel"
+        android:textColor="@color/text_color_pastel" />
 </LinearLayout>

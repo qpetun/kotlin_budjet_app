@@ -1,10 +1,19 @@
 <resources>
-    <string name="app_name">test5</string>
+    <string name="app_name">sosin_app_kotlin</string>
 
     <string-array name="categories">
         <item>Продукты</item>
         <item>Одежда</item>
         <item>Электроника</item>
+        <item>Техника</item>
+        <item>Книги</item>
+        <item>Мебель</item>
+        <item>Автотовары</item>
+        <item>Здоровье и уход</item>
+        <item>Образование</item>
+        <item>Путешествия</item>
+        <item>Товары для животных</item>
+        <item>Сад и огород</item>
         <item>Другое</item>
     </string-array>
 </resources>

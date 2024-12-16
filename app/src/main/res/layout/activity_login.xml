@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@color/background_color_neutral">
 
     <EditText
         android:id="@+id/et_email"
@@ -18,19 +18,23 @@
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Пароль"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:text="Авторизация"
+        android:backgroundTint="@color/button_color"
+        android:textColor="@android:color/white" />
+
     <Button
         android:id="@+id/btn_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:layout_marginTop="16dp" />
-
+        android:text="Перейти к регистрации"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/button_color_pastel"
+        android:textColor="@color/text_color_pastel" />
 </LinearLayout>

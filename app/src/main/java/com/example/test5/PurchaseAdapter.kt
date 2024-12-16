@@ -25,8 +25,8 @@ class PurchaseAdapter : RecyclerView.Adapter<PurchaseAdapter.PurchaseViewHolder>
     override fun onBindViewHolder(holder: PurchaseViewHolder, position: Int) {
         val purchase = purchases[position]
         holder.nameTextView.text = purchase.name
-        holder.priceTextView.text = "Price: $${purchase.price}"
-        holder.categoryTextView.text = "Category: ${purchase.category}"
+        holder.priceTextView.text = "Цена: ${purchase.price}"
+        holder.categoryTextView.text = "Категория: ${purchase.category}"
     }
 
     override fun getItemCount(): Int = purchases.size
@@ -35,5 +35,9 @@ class PurchaseAdapter : RecyclerView.Adapter<PurchaseAdapter.PurchaseViewHolder>
         this.purchases = purchases
         notifyDataSetChanged()
     }
+    fun getPurchaseAt(position: Int): Purchase {
+        return purchases[position]
+    }
+
 }
 
