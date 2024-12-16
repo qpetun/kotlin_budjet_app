@@ -1,0 +1,6 @@
+<resources>
+    <style name="CustomSpinnerStyle">
+        <item name="android:textColor">@color/black</item> <!-- Цвет текста -->
+        <item name="android:textColorHint">@color/darker_hint</item> <!-- Цвет подсказки -->
+    </style>
+</resources>

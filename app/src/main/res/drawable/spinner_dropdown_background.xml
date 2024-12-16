@@ -1,0 +1,4 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/darker_hint"/>  <!-- Цвет фона выпадающего списка -->
+    <corners android:radius="4dp"/> <!-- Скругленные углы -->
+</shape>
