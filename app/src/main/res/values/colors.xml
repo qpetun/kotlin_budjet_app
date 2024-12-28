@@ -3,24 +3,22 @@
     <color name="white">#FFFFFF</color> <!-- Белый для фонов и текста -->
 
     <!-- Основной цвет для фона -->
-    <color name="background_color">#78909C</color> <!-- Темно-серый фон с синим оттенком -->
+    <color name="background_color">#3c3b37</color> <!-- Темно-серый фон с синим оттенком -->
 
 
 
 
     <!-- Нейтральные цвета -->
-    <color name="background_color_neutral">#546E7A</color> <!-- Темно-серый с синим оттенком фон -->
+    <color name="background_color_neutral">#3c3b37</color> <!-- Темно-серый с синим оттенком фон -->
     <color name="button_color_neutral">#455A64</color> <!-- Темно-серый для нейтральных кнопок -->
     <color name="text_color_neutral">#B0BEC5</color> <!-- Светло-серый текст для нейтральных элементов -->
 
-    <!-- Акцентные цвета -->
-    <color name="holo_blue_light">#2979FF</color> <!-- Яркий голубой для кнопок -->
-    <color name="holo_green_dark">#2C6B38</color> <!-- Темный зеленый для акцентов -->
+
 
     <!-- Основной цвет для кнопок -->
-    <color name="button_color">#D81B60</color> <!-- Темно-розовый для кнопок -->
-    <color name="button_color_pastel">#F06292</color> <!-- Пастельный розовый для кнопок -->
-    <color name="text_color_pastel">#FFFFFF</color> <!-- Белый текст на пастельном фоне -->
+    <color name="button_color">#241b0a</color> <!-- Темно-розовый для кнопок -->
+    <color name="button_color_pastel">#241b0a</color> <!-- Пастельный розовый для кнопок -->
+    <color name="text_color_pastel">#feda84</color> <!-- Белый текст на пастельном фоне -->
 
     <color name="darker_hint">#37474F</color> <!-- Очень темный оттенок для подсказки -->
 
@@ -29,11 +27,11 @@
 
 
 
-    <color name="text_color">#E91E63</color> <!-- Розовый для основного текста -->
+    <color name="text_color">#251c0b</color> <!-- Розовый для основного текста -->
 
     <!-- Цена текста -->
-    <color name="price_color">#EC407A</color> <!-- Более насыщенный розовый для цены -->
+    <color name="price_color">#9b6c02</color> <!-- Более насыщенный розовый для цены -->
 
     <!-- Цвет категории -->
-    <color name="category_color">#D81B60</color> <!-- Яркий розовый для категории -->
+    <color name="category_color">#feda84</color> <!-- Яркий розовый для категории -->
 </resources>

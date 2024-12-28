@@ -19,7 +19,7 @@
         android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Выйти с аккаунта"
+        android:text="Выйти из аккаунта"
         android:backgroundTint="@color/button_color_pastel"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/text_color_pastel" />
 </LinearLayout>

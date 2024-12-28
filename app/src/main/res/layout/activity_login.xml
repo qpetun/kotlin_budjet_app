@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="Авторизация"
         android:backgroundTint="@color/button_color"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/text_color_pastel" />
 
     <Button
         android:id="@+id/btn_register"
