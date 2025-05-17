@@ -17,6 +17,7 @@
             android:name=".PurchaseAdapter"
             android:exported="false" />
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".LimitActivity" />
         <activity android:name=".PurchaseActivity" />
         <activity android:name=".GraphActivity" />
         <activity android:name=".ProfileActivity" />

@@ -12,6 +12,7 @@
     <color name="background_color_neutral">#3c3b37</color> <!-- Темно-серый с синим оттенком фон -->
     <color name="button_color_neutral">#455A64</color> <!-- Темно-серый для нейтральных кнопок -->
     <color name="text_color_neutral">#B0BEC5</color> <!-- Светло-серый текст для нейтральных элементов -->
+    <color name="purple_500">#6200EE</color>
 
 
 
@@ -34,4 +35,9 @@
 
     <!-- Цвет категории -->
     <color name="category_color">#feda84</color> <!-- Яркий розовый для категории -->
+
+    <color name="primary_color">#3F51B5</color>
+    <color name="input_background">#F5F5F5</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    <color name="border_color">#CCCCCC</color>
 </resources>

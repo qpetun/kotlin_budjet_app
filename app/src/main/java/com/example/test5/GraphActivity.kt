@@ -134,6 +134,10 @@ class GraphActivity : AppCompatActivity() {
         // Анимация
         pieChart.animateY(1400, Easing.EaseInOutQuad)
         pieChart.invalidate()
+
+        pieChart.setEntryLabelColor(Color.BLACK) // подписи секторов
+        pieChart.setCenterTextColor(Color.BLACK) // центральный текст (если есть)
+        pieChart.legend.textColor = Color.BLACK // легенда
     }
 
 

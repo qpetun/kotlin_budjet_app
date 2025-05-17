@@ -1,6 +1,8 @@
 package com.example.test5
 
 
+
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.drawable.ColorDrawable
@@ -15,18 +17,24 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.test5.R.id.recyclerView
 import com.example.test5.data.PurchaseDatabase
 import com.example.test5.models.Purchase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import android.graphics.Color
+import android.widget.LinearLayout
+import android.widget.TextView
+import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class PurchaseActivity : AppCompatActivity() {
 
     private lateinit var database: PurchaseDatabase
     private lateinit var adapter: PurchaseAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,18 +60,64 @@ class PurchaseActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         categorySpinner.adapter = adapter
 
+        val tvSelectedDate = findViewById<TextView>(R.id.tv_selected_date)
+        val dateContainer = findViewById<LinearLayout>(R.id.dateContainer)
+
+        val storageFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())  // для сохранения
+        val displayFormat = SimpleDateFormat("d MMMM yyyy", Locale("ru"))         // для отображения
+
+
+        val calendar = Calendar.getInstance()
+        var selectedDate = storageFormat.format(calendar.time)
+        val visibleDate = displayFormat.format(calendar.time)
+
+// Установим дату при загрузке
+        tvSelectedDate.text = "Дата: $visibleDate"
+
+// Обработка нажатия на поле даты
+        dateContainer.setOnClickListener {
+            val y = calendar.get(Calendar.YEAR)
+            val m = calendar.get(Calendar.MONTH)
+            val d = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val dpd = DatePickerDialog(this, { _, year, month, day ->
+                calendar.set(year, month, day)
+                selectedDate = storageFormat.format(calendar.time)
+                val visibleDate = displayFormat.format(calendar.time)
+                tvSelectedDate.text = "Дата: $visibleDate"
+            }, y, m, d)
+
+            dpd.show()
+        }
+
+
+
+
         addButton.setOnClickListener {
             val name = nameEditText.text.toString()
             val price = priceEditText.text.toString().toDoubleOrNull()
+
+            val categoryIndex = categorySpinner.selectedItemPosition
+            if (categoryIndex == 0) {
+                Toast.makeText(this, "Пожалуйста, выберите категорию", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val category = categorySpinner.selectedItem.toString()
 
-            if (name.isNotEmpty() && price != null) {
-                val purchase = Purchase(name = name, price = price, category = category)
+            if (name.isNotEmpty() && price != null && selectedDate.isNotEmpty()) {
+
+                val purchase = Purchase(name = name, price = price, category = category, date = selectedDate)
                 addPurchase(purchase)
             } else {
-                Toast.makeText(this, "Пожалуйста, заполните все поля", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Заполните все поля и выберите дату", Toast.LENGTH_SHORT).show()
             }
+
         }
+
+
+
+
 
         val viewGraphButton = findViewById<Button>(R.id.btn_view_graph)
         viewGraphButton.setOnClickListener {
@@ -78,6 +132,13 @@ class PurchaseActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val btnLimit = findViewById<Button>(R.id.btnSetLimit)
+        btnLimit.setOnClickListener {
+            val intent = Intent(this, LimitActivity::class.java)
+            startActivity(intent)
+        }
+
+
         setupSwipeToDelete(recyclerView)
 
 
@@ -87,7 +148,26 @@ class PurchaseActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val purchases = database.purchaseDao().getAllPurchases()
             runOnUiThread {
-                adapter.submitList(purchases)
+                adapter.submitList(purchases.reversed())
+
+                val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+                val limitsJson = prefs.getString("category_limits", "{}")
+                val limits = JSONObject(limitsJson ?: "{}")
+
+                val categoryTotals = purchases.groupBy { it.category }.mapValues { entry ->
+                    entry.value.sumOf { it.price }
+                }
+
+                for ((category, total) in categoryTotals) {
+                    val limit = limits.optDouble(category, -1.0)
+                    if (limit > 0 && total > limit) {
+                        val over = total - limit
+                        Toast.makeText(this@PurchaseActivity, "Превышение лимита по '$category' на ${"%.2f".format(over)}₽", Toast.LENGTH_LONG).show()
+
+                    }
+                }
+
+
             }
         }
     }

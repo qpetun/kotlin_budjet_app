@@ -1,69 +1,164 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/background_color">
+    android:layout_height="match_parent">
 
-    <!-- EditText для ввода имени с темным текстом и более темным фоном для подсказки -->
-    <EditText
-        android:id="@+id/et_name"
+    <ScrollView
+        android:id="@+id/scrollContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_buttons"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Название покупки"
+                android:inputType="text"
+                android:padding="12dp"
+                android:backgroundTint="#AAAAAA"
+                android:background="@android:color/white"
+                android:layout_marginBottom="12dp" />
+
+            <EditText
+                android:id="@+id/et_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Цена"
+                android:inputType="numberDecimal"
+                android:padding="12dp"
+                android:backgroundTint="#AAAAAA"
+                android:background="@android:color/white"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:background="@drawable/spinner_bg"
+                android:layout_marginBottom="12dp">
+
+                <Spinner
+                    android:id="@+id/sp_category"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:padding="8dp"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/arrow_down_float"
+                    android:tint="#888888"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dateContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/date_field_bg">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@android:drawable/ic_menu_my_calendar"
+                    android:tint="#666666"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:id="@+id/tv_selected_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Дата: Сегодня"
+                    android:textSize="16sp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Добавить покупку"
+                android:textAllCaps="false"
+                android:backgroundTint="#2E3A59"
+                android:textColor="@android:color/white"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_marginBottom="0dp" />
+
+                <Button
+                    android:id="@+id/btnSetLimit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Лимит"
+                    android:textAllCaps="false"
+                    android:backgroundTint="#2E3A59"
+                    android:textColor="@android:color/white"
+                    android:padding="8dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="end|top"
+                    android:layout_margin="8dp" />
+            </FrameLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottom_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Название"
-        />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="2"
+        android:layout_alignParentBottom="true"
+        android:padding="4dp"
+        android:background="#F5F5F5">
 
-    <!-- EditText для ввода цены с темным текстом и более темным фоном для подсказки -->
-    <EditText
-        android:id="@+id/et_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Цена"
-        android:inputType="numberDecimal"
-        android:backgroundTint="@color/light_background" />
+        <Button
+            android:id="@+id/btn_view_graph"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="График"
+            android:textAllCaps="false"
+            android:backgroundTint="#2E3A59"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="4dp" />
 
-    <!-- Spinner -->
-    <Spinner
-        android:id="@+id/sp_category"
-        android:layout_width="match_parent"
-        android:layout_height="36dp"
+        <Button
+            android:id="@+id/btn_profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Профиль"
+            android:textAllCaps="false"
+            android:backgroundTint="#2E3A59"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="4dp" />
 
-        android:backgroundTint="@color/background_color"
-        android:outlineAmbientShadowColor="#181717"
-        android:outlineSpotShadowColor="#514154"
-        android:popupBackground="@drawable/spinner_dropdown_background" />
-
-
-
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Добавить покупку"
-        android:backgroundTint="@color/button_color"
-        android:textColor="@color/text_color_pastel" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <Button
-        android:id="@+id/btn_view_graph"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="График"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/button_color"
-        android:textColor="@color/text_color_pastel" />
-
-    <Button
-        android:id="@+id/btn_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Профиль"
-        android:backgroundTint="@color/button_color_pastel"
-        android:textColor="@color/text_color_pastel" />
-</LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

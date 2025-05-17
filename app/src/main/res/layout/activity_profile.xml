@@ -1,25 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@color/background_color_neutral">
+    android:background="#F5F5F5">
 
     <TextView
         android:id="@+id/tv_user_email"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Email: "
         android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#2E3A59"
+        android:background="@android:color/white"
+        android:padding="12dp"
         android:layout_marginBottom="16dp"
-        android:textColor="@color/text_color" />
+        android:elevation="2dp"
+        android:backgroundTint="#DDDDDD" />
 
     <Button
         android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Выйти из аккаунта"
-        android:backgroundTint="@color/button_color_pastel"
-        android:textColor="@color/text_color_pastel" />
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#2E3A59"
+        android:padding="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp" />
 </LinearLayout>

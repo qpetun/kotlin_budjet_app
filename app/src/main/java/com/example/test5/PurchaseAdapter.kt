@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test5.models.Purchase
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class PurchaseAdapter : RecyclerView.Adapter<PurchaseAdapter.PurchaseViewHolder>() {
 
@@ -15,6 +17,7 @@ class PurchaseAdapter : RecyclerView.Adapter<PurchaseAdapter.PurchaseViewHolder>
         val nameTextView: TextView = view.findViewById(R.id.tv_name)
         val priceTextView: TextView = view.findViewById(R.id.tv_price)
         val categoryTextView: TextView = view.findViewById(R.id.tv_category)
+        val dateTextView: TextView = view.findViewById(R.id.tv_date)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PurchaseViewHolder {
@@ -27,6 +30,18 @@ class PurchaseAdapter : RecyclerView.Adapter<PurchaseAdapter.PurchaseViewHolder>
         holder.nameTextView.text = purchase.name
         holder.priceTextView.text = "Цена: ${purchase.price}"
         holder.categoryTextView.text = "Категория: ${purchase.category}"
+
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("d MMMM yyyy", Locale("ru")) // русский язык
+
+        val formattedDate = try {
+            val parsed = inputFormat.parse(purchase.date)
+            outputFormat.format(parsed!!)
+        } catch (e: Exception) {
+            purchase.date // если ошибка — оставить как есть
+        }
+
+        holder.dateTextView.text = "Дата: $formattedDate"
     }
 
     override fun getItemCount(): Int = purchases.size

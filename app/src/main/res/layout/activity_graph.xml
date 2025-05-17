@@ -1,41 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/background_color">
+    android:background="#F5F5F5">
 
-    <!-- Кнопка возврата в левом верхнем углу -->
+    <!-- Кнопка возврата -->
     <ImageButton
         android:id="@+id/btn_back"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@android:drawable/ic_menu_revert"
-        android:background="?android:attr/selectableItemBackground" />
+        android:background="@drawable/round_button_bg"
+        android:tint="@android:color/white"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="8dp" />
 
-    <!-- Диаграмма с категорями по центру -->
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/pieChart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/btn_back"
-        android:layout_marginTop="16dp" />
-
-    <!-- Кнопка переключения вида отображения -->
+    <!-- Кнопка переключения вида -->
     <Button
         android:id="@+id/btn_toggle_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/button_color"
         android:text="%"
-        android:textColor="@color/text_color_pastel"
         android:textSize="18sp"
-        android:padding="16dp"
-        android:gravity="center" />
+        android:padding="8dp"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#2E3A59"
+        android:background="@drawable/round_button_bg"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <!-- Диаграмма -->
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pieChart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btn_back"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentBottom="true" />
+
 </RelativeLayout>

@@ -2,6 +2,7 @@
     <string name="app_name">sosin_app_kotlin</string>
 
     <string-array name="categories">
+        <item>Выберите категорию</item>
         <item>Продукты</item>
         <item>Одежда</item>
         <item>Электроника</item>

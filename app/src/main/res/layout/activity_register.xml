@@ -6,27 +6,37 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="center"
-    android:background="@color/background_color">
+    android:background="#F5F5F5">
 
     <EditText
         android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        android:backgroundTint="#AAAAAA"
+        android:background="@android:color/white"
+        android:layout_marginBottom="12dp" />
 
     <EditText
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Пароль"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:backgroundTint="#AAAAAA"
+        android:background="@android:color/white"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/btn_register"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Зарегистрировать аккаунт"
-        android:backgroundTint="@color/button_color"
-        android:textColor="@color/text_color_pastel" />
+        android:textAllCaps="false"
+        android:backgroundTint="#2E3A59"
+        android:textColor="@android:color/white"
+        android:padding="12dp" />
 </LinearLayout>
