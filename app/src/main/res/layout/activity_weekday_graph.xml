@@ -18,7 +18,7 @@
         android:layout_marginEnd="8dp"
         app:tint="@android:color/white" />
 
-    <!-- Кнопка переключения вида -->
+    <!-- Кнопка переключения отображения -->
     <Button
         android:id="@+id/btn_toggle_view"
         android:layout_width="wrap_content"
@@ -32,13 +32,28 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Траты по дням недели"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#2E3A59"
+        android:layout_toEndOf="@id/btn_back"
+        android:layout_toStartOf="@id/btn_toggle_view"
+        android:layout_alignTop="@id/btn_back"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp" />
+
     <!-- Spinner выбора периода -->
     <Spinner
         android:id="@+id/dateFilter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_back"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="16dp" />
 
     <!-- Отображение выбранного произвольного диапазона -->
     <TextView
@@ -53,13 +68,13 @@
         android:textSize="14sp"
         android:visibility="gone" />
 
-    <!-- Круговая диаграмма -->
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/pieChart"
+    <!-- Столбчатая диаграмма -->
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/customDateLabel"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

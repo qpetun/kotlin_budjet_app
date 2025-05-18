@@ -19,6 +19,9 @@ interface PurchaseDao {
 
     @Query("SELECT category, SUM(price) as totalAmount FROM purchases GROUP BY category")
     suspend fun getCategoryExpenses(): List<CategoryExpense>
+
+    @Query("SELECT * FROM purchases")
+    fun getAll(): List<com.example.test5.models.Purchase>
 }
 
 

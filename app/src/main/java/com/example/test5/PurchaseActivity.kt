@@ -90,6 +90,25 @@ class PurchaseActivity : AppCompatActivity() {
             dpd.show()
         }
 
+        val btnWeekdayGraph = findViewById<Button>(R.id.btn_weekday)
+        btnWeekdayGraph.setOnClickListener {
+            val intent = Intent(this, WeekdayGraphActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        val btnTrendGraph = findViewById<Button>(R.id.btn_trend_graph)
+        btnTrendGraph.setOnClickListener {
+            val intent = Intent(this, TrendGraphActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        val btnTop = findViewById<Button>(R.id.btn_top_categories)
+        btnTop.setOnClickListener {
+            val intent = Intent(this, TopCategoriesActivity::class.java)
+            startActivity(intent)
+        }
 
 
 
@@ -119,7 +138,7 @@ class PurchaseActivity : AppCompatActivity() {
 
 
 
-        val viewGraphButton = findViewById<Button>(R.id.btn_view_graph)
+        val viewGraphButton = findViewById<Button>(R.id.btn_graph)
         viewGraphButton.setOnClickListener {
             val intent = Intent(this, GraphActivity::class.java)
             startActivity(intent)

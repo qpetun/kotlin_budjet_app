@@ -21,6 +21,9 @@
         <activity android:name=".PurchaseActivity" />
         <activity android:name=".GraphActivity" />
         <activity android:name=".ProfileActivity" />
+        <activity android:name=".WeekdayGraphActivity" />
+        <activity android:name=".TrendGraphActivity" />
+        <activity android:name=".TopCategoriesActivity" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
